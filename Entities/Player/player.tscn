@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxbpq1alnb168"]
+
+[ext_resource type="Texture2D" uid="uid://c03nl7f6mc6q1" path="res://Entities/Player/player_bottom.png" id="1_d37t4"]
+[ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_v007v"]
+[ext_resource type="Texture2D" uid="uid://cnfosp3tx52j3" path="res://Entities/Player/player_top.png" id="2_mepn3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
+height = 50.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v007v")
+
+[node name="BottomSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_d37t4")
+
+[node name="TopSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_mepn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.13163e-14, 38)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_18qna")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -250.0
+offset_top = 48.0
+offset_right = 250.0
+offset_bottom = 71.0
+text = "Player Name"
+horizontal_alignment = 1
