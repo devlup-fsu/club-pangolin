@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://4x28bgo3s65t"]
+
+[ext_resource type="Script" path="res://Scenes/PlayerSelectScreen/player_select_screen.gd" id="1_0lw4n"]
+[ext_resource type="PackedScene" uid="uid://bxbpq1alnb168" path="res://Entities/Player/player.tscn" id="2_xf41d"]
+[ext_resource type="Theme" uid="uid://bin1lq1ht3xqa" path="res://Themes/theme.tres" id="3_7sqek"]
+
+[node name="PlayerSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0lw4n")
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 25.0
+offset_right = 430.0
+offset_bottom = 297.0
+edit_alpha = false
+picker_shape = 2
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="Player" parent="." instance=ExtResource("2_xf41d")]
+process_mode = 4
+position = Vector2(900, 300)
+scale = Vector2(2, 2)
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 336.0
+offset_right = 429.0
+offset_bottom = 369.0
+theme = ExtResource("3_7sqek")
+text = "John Pangolin"
+placeholder_text = "Name"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 449.0
+offset_right = 344.0
+offset_bottom = 508.0
+theme = ExtResource("3_7sqek")
+text = "Join"
+
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
