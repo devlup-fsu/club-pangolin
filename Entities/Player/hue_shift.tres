@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://y23awprw5ods"]
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://bducsy7hhfs0m"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2qrpf"]
 input_name = "texture"
@@ -98,4 +98,4 @@ nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_w8uiq")
 nodes/fragment/7/position = Vector2(-280, 560)
 nodes/fragment/9/node = SubResource("VisualShaderNodeClamp_0q107")
 nodes/fragment/9/position = Vector2(160, 640)
-nodes/fragment/connections = PackedInt32Array(2, 0, 4, 2, 4, 0, 3, 0, 3, 0, 5, 0, 6, 0, 0, 0, 5, 2, 6, 0, 7, 0, 9, 0, 9, 0, 6, 1)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 2, 4, 0, 3, 0, 3, 0, 5, 0, 6, 0, 0, 0, 7, 0, 6, 1, 5, 2, 6, 0, 7, 0, 9, 0, 9, 0, 6, 1)

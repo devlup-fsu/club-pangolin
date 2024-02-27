@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkovgk4uy3l8f"]
+
+[ext_resource type="PackedScene" uid="uid://bxbpq1alnb168" path="res://Entities/Player/player.tscn" id="1_kfqj4"]
+[ext_resource type="PackedScene" uid="uid://d14c6rgad3oso" path="res://Entities/EmojiPicker/emoji_picker.tscn" id="2_63fh4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_61nta"]
+normal = Vector2(2.08165e-12, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j2yhl"]
+normal = Vector2(1, 2.08165e-12)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e1mdf"]
+normal = Vector2(2.08165e-12, -1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hyb33"]
+normal = Vector2(-1, 2.08165e-12)
+
+[node name="Level" type="Node2D"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="TopBoundary" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_61nta")
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_j2yhl")
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1152, 648)
+shape = SubResource("WorldBoundaryShape2D_e1mdf")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1152, 648)
+shape = SubResource("WorldBoundaryShape2D_hyb33")
+
+[node name="Player" parent="." instance=ExtResource("1_kfqj4")]
+position = Vector2(571, 284)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EmojiPicker" parent="Control" node_paths=PackedStringArray("player") instance=ExtResource("2_63fh4")]
+player = NodePath("../../Player")
