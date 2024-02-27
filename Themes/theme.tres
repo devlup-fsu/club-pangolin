@@ -8,6 +8,7 @@
 [resource]
 default_font = ExtResource("1_jqj1q")
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/h_separation = 20
 Button/constants/outline_size = 8
 Button/styles/disabled = ExtResource("1_7p0u8")
 Button/styles/focus = ExtResource("1_7p0u8")
