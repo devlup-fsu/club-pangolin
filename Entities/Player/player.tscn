@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxbpq1alnb168"]
+[gd_scene load_steps=7 format=3 uid="uid://bxbpq1alnb168"]
 
 [ext_resource type="Texture2D" uid="uid://c03nl7f6mc6q1" path="res://Entities/Player/player_bottom.png" id="1_d37t4"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_v007v"]
 [ext_resource type="Texture2D" uid="uid://cnfosp3tx52j3" path="res://Entities/Player/player_top.png" id="2_mepn3"]
+[ext_resource type="Shader" uid="uid://y23awprw5ods" path="res://Entities/Player/hue_shift.tres" id="2_ufobd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
+shader = ExtResource("2_ufobd")
+shader_parameter/Color = Color(0.970446, 0.289487, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
 height = 50.0
@@ -11,6 +16,7 @@ height = 50.0
 script = ExtResource("1_v007v")
 
 [node name="BottomSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wm0k8")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_d37t4")
 
