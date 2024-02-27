@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://y23awprw5ods"]
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://y23awprw5ods"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2qrpf"]
 input_name = "texture"
@@ -21,6 +21,10 @@ operator = 2
 parameter_name = "Color"
 default_value_enabled = true
 default_value = Color(0.970446, 0.289487, 1, 1)
+
+[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_0q107"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.4, 0.4, 0.4), 2, Vector3(1, 1, 1)]
+op_type = 4
 
 [resource]
 code = "shader_type canvas_item;
@@ -60,8 +64,14 @@ void fragment() {
 	vec4 n_out7p0 = Color;
 
 
+// Clamp:9
+	vec3 n_in9p1 = vec3(0.40000, 0.40000, 0.40000);
+	vec3 n_in9p2 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out9p0 = clamp(vec3(n_out7p0.xyz), n_in9p1, n_in9p2);
+
+
 // VectorOp:6
-	vec3 n_out6p0 = vec3(n_out5p2) * vec3(n_out7p0.xyz);
+	vec3 n_out6p0 = vec3(n_out5p2) * n_out9p0;
 
 
 // Output:0
@@ -70,10 +80,10 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-969.894, 11.7685)
+graph_offset = Vector2(-552.561, 25.7685)
 mode = 1
 flags/light_only = false
-nodes/fragment/0/position = Vector2(600, 260)
+nodes/fragment/0/position = Vector2(660, 260)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_2qrpf")
 nodes/fragment/2/position = Vector2(-1060, 420)
 nodes/fragment/3/node = SubResource("VisualShaderNodeColorFunc_4yq3v")
@@ -83,7 +93,9 @@ nodes/fragment/4/position = Vector2(-620, 220)
 nodes/fragment/5/node = SubResource("VisualShaderNodeVectorDecompose_k0gcm")
 nodes/fragment/5/position = Vector2(40, 240)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ik7p2")
-nodes/fragment/6/position = Vector2(360, 260)
+nodes/fragment/6/position = Vector2(420, 260)
 nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_w8uiq")
 nodes/fragment/7/position = Vector2(-280, 560)
-nodes/fragment/connections = PackedInt32Array(2, 0, 4, 2, 4, 0, 3, 0, 3, 0, 5, 0, 6, 0, 0, 0, 7, 0, 6, 1, 5, 2, 6, 0)
+nodes/fragment/9/node = SubResource("VisualShaderNodeClamp_0q107")
+nodes/fragment/9/position = Vector2(160, 640)
+nodes/fragment/connections = PackedInt32Array(2, 0, 4, 2, 4, 0, 3, 0, 3, 0, 5, 0, 6, 0, 0, 0, 5, 2, 6, 0, 7, 0, 9, 0, 9, 0, 6, 1)
