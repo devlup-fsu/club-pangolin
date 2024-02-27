@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxbpq1alnb168"]
+[gd_scene load_steps=8 format=3 uid="uid://bxbpq1alnb168"]
 
 [ext_resource type="Texture2D" uid="uid://c03nl7f6mc6q1" path="res://Entities/Player/player_bottom.png" id="1_d37t4"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_v007v"]
 [ext_resource type="Texture2D" uid="uid://cnfosp3tx52j3" path="res://Entities/Player/player_top.png" id="2_mepn3"]
-[ext_resource type="Shader" uid="uid://y23awprw5ods" path="res://Entities/Player/hue_shift.tres" id="2_ufobd"]
+[ext_resource type="Shader" uid="uid://bducsy7hhfs0m" path="res://Entities/Player/hue_shift.tres" id="2_ufobd"]
+[ext_resource type="Texture2D" uid="uid://c86y1qltqapan" path="res://Entities/EmojiPicker/Emojis/partying_face.svg" id="5_anhb5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
 shader = ExtResource("2_ufobd")
-shader_parameter/Color = Color(0.970446, 0.289487, 1, 1)
+shader_parameter/Color = Color(0.658824, 0.52549, 0.215686, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
 height = 50.0
@@ -36,3 +37,7 @@ offset_right = 250.0
 offset_bottom = 71.0
 text = "Player Name"
 horizontal_alignment = 1
+
+[node name="Emoji" type="Sprite2D" parent="."]
+position = Vector2(0, -75)
+texture = ExtResource("5_anhb5")
