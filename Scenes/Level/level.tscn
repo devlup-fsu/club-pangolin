@@ -1,22 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkovgk4uy3l8f"]
+[gd_scene load_steps=8 format=3 uid="uid://bkovgk4uy3l8f"]
 
 [ext_resource type="PackedScene" uid="uid://bxbpq1alnb168" path="res://Entities/Player/player.tscn" id="1_kfqj4"]
 [ext_resource type="Shader" uid="uid://cqieloblex8x3" path="res://Scenes/Level/water.tres" id="1_uuotg"]
 [ext_resource type="PackedScene" uid="uid://d14c6rgad3oso" path="res://Entities/EmojiPicker/emoji_picker.tscn" id="2_63fh4"]
 [ext_resource type="Texture2D" uid="uid://cnkfglqy5gqff" path="res://Scenes/Level/pangolin_level.png" id="2_qc7k7"]
 [ext_resource type="Script" path="res://Scenes/Level/camera_sway.gd" id="3_v1j8x"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_61nta"]
-normal = Vector2(2.08165e-12, 1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j2yhl"]
-normal = Vector2(1, 2.08165e-12)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e1mdf"]
-normal = Vector2(2.08165e-12, -1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hyb33"]
-normal = Vector2(-1, 2.08165e-12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f4yww"]
 shader = ExtResource("1_uuotg")
@@ -28,21 +16,14 @@ shader_parameter/CurrentDirection = Vector2(21.705, 100000)
 
 [node name="Island" type="Node2D" parent="."]
 
-[node name="Walls" type="StaticBody2D" parent="Island"]
+[node name="Boundaries" type="StaticBody2D" parent="Island"]
+position = Vector2(-1, 0)
 
-[node name="TopBoundary" type="CollisionShape2D" parent="Island/Walls"]
-shape = SubResource("WorldBoundaryShape2D_61nta")
+[node name="LeftBoundary" type="CollisionPolygon2D" parent="Island/Boundaries"]
+polygon = PackedVector2Array(409, 145, 408, -1, 1, -1, 2, 647, 569, 646, 569, 555, 356, 530, 227, 484, 160, 435, 174, 377, 189, 346, 250, 322, 249, 271, 274, 241, 335, 223, 344, 166)
 
-[node name="LeftBoundary" type="CollisionShape2D" parent="Island/Walls"]
-shape = SubResource("WorldBoundaryShape2D_j2yhl")
-
-[node name="BottomBoundary" type="CollisionShape2D" parent="Island/Walls"]
-position = Vector2(1152, 648)
-shape = SubResource("WorldBoundaryShape2D_e1mdf")
-
-[node name="RightBoundary" type="CollisionShape2D" parent="Island/Walls"]
-position = Vector2(1152, 648)
-shape = SubResource("WorldBoundaryShape2D_hyb33")
+[node name="RightBoundary" type="CollisionPolygon2D" parent="Island/Boundaries"]
+polygon = PackedVector2Array(557, 549, 620, 566, 681, 563, 905, 509, 946, 482, 989, 416, 1006, 387, 976, 349, 882, 286, 806, 262, 719, 214, 627, 223, 464, 144, 407, 143, 407, -4, 1154, -2, 1154, 646, 549, 647)
 
 [node name="Water" type="Sprite2D" parent="Island"]
 material = SubResource("ShaderMaterial_f4yww")

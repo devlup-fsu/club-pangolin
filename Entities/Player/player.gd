@@ -6,7 +6,7 @@ const SPEED = 300.0
 @onready var bottom_sprite: Sprite2D = $BottomSprite
 @onready var nickname_label: Label = $NicknameLabel
 
-var is_groovin: bool = false
+@export var is_groovin: bool = false
 var time: float = 0
 
 func _physics_process(_delta):
