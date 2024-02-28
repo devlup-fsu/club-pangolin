@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxbpq1alnb168"]
+[gd_scene load_steps=12 format=3 uid="uid://bxbpq1alnb168"]
 
 [ext_resource type="Texture2D" uid="uid://c03nl7f6mc6q1" path="res://Entities/Player/player_bottom.png" id="1_d37t4"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_v007v"]
@@ -6,8 +6,10 @@
 [ext_resource type="Shader" uid="uid://bducsy7hhfs0m" path="res://Entities/Player/hue_shift.tres" id="2_ufobd"]
 [ext_resource type="Texture2D" uid="uid://c86y1qltqapan" path="res://Entities/EmojiPicker/Emojis/partying_face.svg" id="5_anhb5"]
 [ext_resource type="Theme" uid="uid://bin1lq1ht3xqa" path="res://Themes/theme.tres" id="5_te1jj"]
+[ext_resource type="Script" path="res://Entities/Player/input_synchronizer.gd" id="7_wiq6k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
+resource_local_to_scene = true
 shader = ExtResource("2_ufobd")
 shader_parameter/isSpectral = false
 shader_parameter/Color = Color(0.658824, 0.52549, 0.215686, 1)
@@ -15,7 +17,18 @@ shader_parameter/Color = Color(0.658824, 0.52549, 0.215686, 1)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
 height = 50.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h07jr"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_31lf5"]
+properties/0/path = NodePath("InputSynchronizer:direction")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_v007v")
 
 [node name="BottomSprite" type="Sprite2D" parent="."]
@@ -46,3 +59,10 @@ horizontal_alignment = 1
 [node name="Emoji" type="Sprite2D" parent="."]
 position = Vector2(0, -75)
 texture = ExtResource("5_anhb5")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_h07jr")
+
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_31lf5")
+script = ExtResource("7_wiq6k")
