@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkovgk4uy3l8f"]
+[gd_scene load_steps=7 format=3 uid="uid://bkovgk4uy3l8f"]
 
 [ext_resource type="Script" path="res://Scenes/Level/level.gd" id="1_aqojm"]
 [ext_resource type="Shader" uid="uid://cqieloblex8x3" path="res://Scenes/Level/water.tres" id="1_uuotg"]
 [ext_resource type="PackedScene" uid="uid://d14c6rgad3oso" path="res://Entities/EmojiPicker/emoji_picker.tscn" id="2_63fh4"]
 [ext_resource type="Texture2D" uid="uid://cnkfglqy5gqff" path="res://Scenes/Level/pangolin_level.png" id="2_qc7k7"]
-[ext_resource type="Script" path="res://Scenes/Level/camera_sway.gd" id="3_v1j8x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f4yww"]
 shader = ExtResource("1_uuotg")
@@ -15,45 +14,34 @@ shader_parameter/CurrentDirection = Vector2(21.705, 100000)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_aqojm")
 
-[node name="Island" type="Node2D" parent="."]
-
-[node name="Boundaries" type="StaticBody2D" parent="Island"]
+[node name="Boundaries" type="StaticBody2D" parent="."]
 position = Vector2(-1, 0)
 
-[node name="LeftBoundary" type="CollisionPolygon2D" parent="Island/Boundaries"]
+[node name="LeftBoundary" type="CollisionPolygon2D" parent="Boundaries"]
 polygon = PackedVector2Array(409, 145, 408, -1, 1, -1, 2, 647, 569, 646, 569, 555, 356, 530, 227, 484, 160, 435, 174, 377, 189, 346, 250, 322, 249, 271, 274, 241, 335, 223, 344, 166)
 
-[node name="RightBoundary" type="CollisionPolygon2D" parent="Island/Boundaries"]
+[node name="RightBoundary" type="CollisionPolygon2D" parent="Boundaries"]
 polygon = PackedVector2Array(557, 549, 620, 566, 681, 563, 905, 509, 946, 482, 989, 416, 1006, 387, 976, 349, 882, 286, 806, 262, 719, 214, 627, 223, 464, 144, 407, 143, 407, -4, 1154, -2, 1154, 646, 549, 647)
 
-[node name="Water" type="Sprite2D" parent="Island"]
+[node name="Water" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_f4yww")
 position = Vector2(571, 310.5)
 scale = Vector2(4.86935, 2.89659)
 skew = 1.06465
 texture = SubResource("NoiseTexture2D_iw04i")
 
-[node name="Island" type="Sprite2D" parent="Island"]
+[node name="Island2" type="Sprite2D" parent="."]
 position = Vector2(577, 323.25)
 scale = Vector2(0.604167, 0.594907)
 texture = ExtResource("2_qc7k7")
 
-[node name="Players" type="Node2D" parent="Island"]
+[node name="Players" type="Node2D" parent="."]
 
-[node name="UILayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Control" type="Control" parent="UILayer"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="EmojiPicker" parent="UILayer/Control" node_paths=PackedStringArray("player") instance=ExtResource("2_63fh4")]
+[node name="EmojiPicker" parent="Control" instance=ExtResource("2_63fh4")]
 unique_name_in_owner = true
-player = NodePath("")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576.385, 322.26)
-ignore_rotation = false
-script = ExtResource("3_v1j8x")
