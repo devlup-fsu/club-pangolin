@@ -9,3 +9,7 @@ func _on_line_edit_text_changed(value: String):
 
 func _on_color_picker_color_changed(color: Color):
 	player.set_color(color)
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Level/level.tscn")
