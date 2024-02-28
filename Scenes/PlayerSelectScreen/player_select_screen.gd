@@ -1,6 +1,6 @@
 extends Control
 
-@onready var player: Player = $Player
+@onready var player: Player = $Control/Player
 
 
 func _on_line_edit_text_changed(value: String):
