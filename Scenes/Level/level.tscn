@@ -27,8 +27,8 @@ polygon = PackedVector2Array(557, 549, 620, 566, 681, 563, 905, 509, 946, 482, 9
 
 [node name="Water" type="Sprite2D" parent="Island"]
 material = SubResource("ShaderMaterial_f4yww")
-position = Vector2(568, 331)
-scale = Vector2(4.73661, 2.73142)
+position = Vector2(571, 310.5)
+scale = Vector2(4.86935, 2.89659)
 skew = 1.06465
 texture = SubResource("NoiseTexture2D_iw04i")
 
