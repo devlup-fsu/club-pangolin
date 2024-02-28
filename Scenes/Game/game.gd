@@ -14,5 +14,4 @@ func _on_start_menu_next():
 func _on_player_select_screen_next(nickname: String, color: Color):
 	level.spawn_player(nickname, color)
 	level.visible = true
-	chatBox.visible = true
 	$PlayerSelectScreen.queue_free()

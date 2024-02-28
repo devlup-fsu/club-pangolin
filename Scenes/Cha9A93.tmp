@@ -38,6 +38,6 @@ text = "[Team]"
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "TYPE HERE"
+placeholder_text = "Press TAB to change groups"
 
 [connection signal="text_submitted" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
