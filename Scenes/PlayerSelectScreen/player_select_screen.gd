@@ -1,5 +1,7 @@
 extends Control
 
+signal next(nickname: String, color: Color)
+
 @onready var player: Player = $Control/Player
 
 
@@ -12,4 +14,5 @@ func _on_color_picker_color_changed(color: Color):
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Level/level.tscn")
+	print("Pressed")
+	next.emit(%NicknameLineEdit.text, %ColorPicker.color)

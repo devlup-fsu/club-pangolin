@@ -16,6 +16,7 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
+
 func set_nickname(value: String):
 	nickname_label.text = value
 

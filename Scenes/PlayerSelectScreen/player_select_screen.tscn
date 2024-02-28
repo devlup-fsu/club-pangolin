@@ -86,6 +86,7 @@ grow_vertical = 2
 theme_override_constants/separation = 50
 
 [node name="ColorPicker" type="ColorPicker" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 edit_alpha = false
 picker_shape = 2
@@ -96,7 +97,8 @@ sliders_visible = false
 hex_visible = false
 presets_visible = false
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="NicknameLineEdit" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme = ExtResource("3_7sqek")
@@ -105,12 +107,12 @@ placeholder_text = "Name"
 alignment = 1
 max_length = 15
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="JoinButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 78)
 layout_mode = 2
 theme = ExtResource("3_7sqek")
 text = "Join"
 
 [connection signal="color_changed" from="VBoxContainer/ColorPicker" to="." method="_on_color_picker_color_changed"]
-[connection signal="text_changed" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer/NicknameLineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/JoinButton" to="." method="_on_button_pressed"]
