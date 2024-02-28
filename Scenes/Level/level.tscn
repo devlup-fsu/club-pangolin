@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bkovgk4uy3l8f"]
 
 [ext_resource type="PackedScene" uid="uid://bxbpq1alnb168" path="res://Entities/Player/player.tscn" id="1_kfqj4"]
-[ext_resource type="Shader" uid="uid://b4uap8a2aw6je" path="res://Scenes/Level/water.tres" id="1_uuotg"]
+[ext_resource type="Shader" uid="uid://cqieloblex8x3" path="res://Scenes/Level/water.tres" id="1_uuotg"]
 [ext_resource type="PackedScene" uid="uid://d14c6rgad3oso" path="res://Entities/EmojiPicker/emoji_picker.tscn" id="2_63fh4"]
 [ext_resource type="Texture2D" uid="uid://cnkfglqy5gqff" path="res://Scenes/Level/pangolin_level.png" id="2_qc7k7"]
 [ext_resource type="Script" path="res://Scenes/Level/camera_sway.gd" id="3_v1j8x"]
