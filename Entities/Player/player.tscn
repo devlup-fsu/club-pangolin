@@ -9,6 +9,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
 shader = ExtResource("2_ufobd")
+shader_parameter/isSpectral = false
 shader_parameter/Color = Color(0.658824, 0.52549, 0.215686, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
@@ -18,11 +19,13 @@ height = 50.0
 script = ExtResource("1_v007v")
 
 [node name="BottomSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_wm0k8")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_d37t4")
 
 [node name="TopSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_mepn3")
 

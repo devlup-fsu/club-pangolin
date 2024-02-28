@@ -102,6 +102,7 @@ layout_mode = 2
 theme = ExtResource("3_7sqek")
 text = "John Pangolin"
 placeholder_text = "Name"
+alignment = 1
 max_length = 15
 
 [node name="Button" type="Button" parent="VBoxContainer"]
