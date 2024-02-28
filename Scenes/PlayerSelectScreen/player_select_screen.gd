@@ -14,5 +14,4 @@ func _on_color_picker_color_changed(color: Color):
 
 
 func _on_button_pressed():
-	print("Pressed")
 	next.emit(%NicknameLineEdit.text, %ColorPicker.color)

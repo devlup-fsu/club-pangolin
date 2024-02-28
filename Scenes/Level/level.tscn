@@ -40,15 +40,17 @@ texture = ExtResource("2_qc7k7")
 
 [node name="Players" type="Node2D" parent="Island"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="UILayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="EmojiPicker" parent="CanvasLayer/Control" node_paths=PackedStringArray("player") instance=ExtResource("2_63fh4")]
+[node name="EmojiPicker" parent="UILayer/Control" node_paths=PackedStringArray("player") instance=ExtResource("2_63fh4")]
+unique_name_in_owner = true
 player = NodePath("")
 
 [node name="Camera2D" type="Camera2D" parent="."]
