@@ -12,6 +12,9 @@ func _ready():
 
 
 func _physics_process(_delta):
+	if get_node("/root/Game/UserInterface/ChatBox").is_focused():
+		return
+	
 	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
 	
 	velocity = direction * SPEED
