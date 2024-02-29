@@ -7,12 +7,17 @@ const SPEED = 300.0
 @onready var nickname_label: Label = $NicknameLabel
 
 @export var is_groovin: bool = false
+@export var color: Color
 @export var id: int = 1:
 	set(value):
 		id = value
 		$InputSynchronizer.set_multiplayer_authority(id)
 
 var time: float = 0
+
+func _ready():
+	set_color(color)
+
 
 func _physics_process(_delta):
 	var direction = $InputSynchronizer.direction
@@ -26,8 +31,17 @@ func set_nickname(value: String):
 	nickname_label.text = value
 
 
+func get_nickname() -> String:
+	return nickname_label.text
+
+
 func set_color(color: Color):
+	self.color = color
 	bottom_sprite.material.set_shader_parameter("Color", color)
+
+
+func get_color() -> Color:
+	return color
 
 
 @rpc("any_peer", "call_local")
