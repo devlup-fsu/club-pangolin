@@ -24,7 +24,7 @@ func _on_emoji_pressed(emoji_name: String):
 
 @rpc("any_peer", "call_local")
 func set_emoji(id: int, emoji_name: String):
-	var player = %Level.get_player(id)
+	var player = get_node("/root/Game/Level").get_player(id)
 	if player:
 		player.set_emoji(emojis[emoji_name])
 

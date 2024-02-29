@@ -1,13 +1,13 @@
 extends Control
 
-@export var id: int
+@export var id: int = 1
 
 @onready var chatLog = get_node("VBoxContainer/RichTextLabel")
 
 
 @rpc("any_peer", "call_local")
 func add_message(id: int, text: String):
-	var player = %Level.get_player(id)
+	var player = get_node("/root/Game/Level").get_player(id)
 	if not player:
 		return
 
