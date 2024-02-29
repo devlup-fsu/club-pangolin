@@ -17,10 +17,7 @@ func _ready():
 	set_color(color)
 
 
-func _physics_process(_delta):
-	if get_node("/root/Game/UserInterface/ChatBox").is_focused():
-		return
-  
+func _physics_process(_delta):  
 	var direction = $InputSynchronizer.direction
 	
 	velocity = direction * SPEED

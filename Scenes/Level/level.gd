@@ -2,6 +2,11 @@ extends Node2D
 
 var player_scene: PackedScene = load("res://Entities/Player/player.tscn")
 
+
+func _ready():
+	multiplayer.peer_disconnected.connect(_on_multiplayer_peer_disconnected)
+
+
 func get_player(id: int) -> Player:
 	for player in %Players.get_children():
 		if player is Player and player.id == id:
@@ -14,3 +19,8 @@ func get_player(id: int) -> Player:
 func spawn_player(nickname: String, color: Color):
 	if multiplayer.is_server():
 		var player = $MultiplayerSpawner.spawn({"id": multiplayer.get_remote_sender_id(), "nickname": nickname, "color": color})
+
+
+func _on_multiplayer_peer_disconnected(id: int):
+	print(id, " disconnected")
+	get_player(id).queue_free()
