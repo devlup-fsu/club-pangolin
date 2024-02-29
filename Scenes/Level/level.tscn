@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkovgk4uy3l8f"]
+[gd_scene load_steps=7 format=3 uid="uid://bkovgk4uy3l8f"]
 
 [ext_resource type="Script" path="res://Scenes/Level/level.gd" id="1_aqojm"]
 [ext_resource type="Shader" uid="uid://cqieloblex8x3" path="res://Scenes/Level/water.tres" id="1_uuotg"]
-[ext_resource type="PackedScene" uid="uid://d14c6rgad3oso" path="res://Entities/EmojiPicker/emoji_picker.tscn" id="2_63fh4"]
 [ext_resource type="Texture2D" uid="uid://cnkfglqy5gqff" path="res://Scenes/Level/pangolin_level.png" id="2_qc7k7"]
 [ext_resource type="Script" path="res://Scenes/Level/multiplayer_spawner.gd" id="5_45q6h"]
 
@@ -37,15 +36,13 @@ scale = Vector2(0.604167, 0.594907)
 texture = ExtResource("2_qc7k7")
 
 [node name="Players" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="EmojiPicker" parent="Control" instance=ExtResource("2_63fh4")]
-unique_name_in_owner = true
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 unique_name_in_owner = true

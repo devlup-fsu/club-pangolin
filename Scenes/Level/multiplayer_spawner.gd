@@ -13,4 +13,5 @@ func _on_spawn(data: Dictionary) -> Player:
 	player.set_color.call_deferred(data["color"])
 	player.id = data["id"]
 	player.global_position = get_viewport().get_visible_rect().size / 2
+	
 	return player

@@ -30,6 +30,7 @@ func set_color(color: Color):
 	bottom_sprite.material.set_shader_parameter("Color", color)
 
 
+@rpc("any_peer", "call_local")
 func set_emoji(texture: Texture2D):
 	emoji.texture = texture
 
