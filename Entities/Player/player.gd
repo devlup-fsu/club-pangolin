@@ -18,6 +18,9 @@ func _ready():
 
 
 func _physics_process(_delta):
+	if get_node("/root/Game/UserInterface/ChatBox").is_focused():
+		return
+  
 	var direction = $InputSynchronizer.direction
 	
 	velocity = direction * SPEED
