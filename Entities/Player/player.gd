@@ -16,6 +16,10 @@ func _physics_process(_delta):
 	
 	velocity = direction * SPEED
 	
+	if velocity.x != 0:
+		%BottomSprite.flip_h = velocity.x > 0
+		%TopSprite.flip_h = velocity.x > 0
+	
 	move_and_slide()
 
 
