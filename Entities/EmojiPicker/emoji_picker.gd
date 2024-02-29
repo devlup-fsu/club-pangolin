@@ -12,7 +12,7 @@ func _ready():
 	for file_name in DirAccess.get_files_at(path):
 		var extension: String = file_name.split(".")[-1]
 		var emoji_name = file_name.substr(0, file_name.length() - extension.length() - 1)
-		if extension == "svg" or extension == "png":
+		if extension == "svg" or extension == "png" or extension == 'gif':
 			emojis[emoji_name] = load(path + file_name)
 			
 			var emoji_button = EmojiButton.create(emoji_name, emojis[emoji_name])
