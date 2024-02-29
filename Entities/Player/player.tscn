@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxbpq1alnb168"]
+[gd_scene load_steps=15 format=3 uid="uid://bxbpq1alnb168"]
 
 [ext_resource type="Texture2D" uid="uid://c03nl7f6mc6q1" path="res://Entities/Player/player_bottom.png" id="1_d37t4"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_v007v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://bducsy7hhfs0m" path="res://Entities/Player/hue_shift.tres" id="2_ufobd"]
 [ext_resource type="Theme" uid="uid://bin1lq1ht3xqa" path="res://Themes/theme.tres" id="5_te1jj"]
 [ext_resource type="Texture2D" uid="uid://dwv3oy601txh3" path="res://Entities/EmojiPicker/Emojis/nerd.svg" id="6_3krtq"]
+[ext_resource type="Script" path="res://Entities/Player/input_synchronizer.gd" id="7_x6ee3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
 resource_local_to_scene = true
@@ -95,6 +96,22 @@ _data = {
 "show_emoji": SubResource("Animation_j8v2y")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xeyod"]
+properties/0/path = NodePath("InputSynchronizer:direction")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3rgi2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("BottomSprite:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("TopSprite:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_v007v")
@@ -138,3 +155,10 @@ root_node = NodePath("../EmojiSprite")
 libraries = {
 "": SubResource("AnimationLibrary_tmhq4")
 }
+
+[node name="InputSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xeyod")
+script = ExtResource("7_x6ee3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_3rgi2")

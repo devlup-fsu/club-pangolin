@@ -5,6 +5,12 @@ const SPEED = 300.0
 @export var is_groovin: bool = false
 @export var color: Color
 
+@export var id: int = 1:
+	set(value):
+		id = value
+		$InputSynchronizer.set_multiplayer_authority(id)
+
+
 var time: float = 0
 
 func _ready():
@@ -12,7 +18,8 @@ func _ready():
 
 
 func _physics_process(_delta):
-	var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
+	#var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
+	var direction = $InputSynchronizer.direction
 	
 	velocity = direction * SPEED
 	
