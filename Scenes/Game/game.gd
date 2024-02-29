@@ -1,7 +1,6 @@
 extends Node
 
 @onready var level: Node2D = $Level
-@onready var chatBox = $ChatBox
 
 
 func _on_start_menu_next():
