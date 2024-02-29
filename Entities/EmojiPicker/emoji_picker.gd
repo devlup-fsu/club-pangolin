@@ -2,7 +2,7 @@ extends Control
 
 @export var id: int = 1
 
-@onready var grid_container: GridContainer = $GridContainer
+@onready var container: Container = $GridContainer
 
 var emojis = Dictionary()	# Dictionary<String, Texture2D>
 
@@ -17,7 +17,7 @@ func _ready():
 			
 			var emoji_button = EmojiButton.create(emoji_name, emojis[emoji_name])
 			emoji_button.emoji_pressed.connect(_on_emoji_pressed)
-			grid_container.add_child(emoji_button)
+			container.add_child(emoji_button)
 
 func _on_emoji_pressed(emoji_name: String):
 	set_emoji.rpc(id, emoji_name)
