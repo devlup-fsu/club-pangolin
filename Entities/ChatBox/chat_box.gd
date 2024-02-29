@@ -1,11 +1,16 @@
 extends Control
 
-@export var player: Player
+@export var id: int = 1
 
 @onready var chatLog = get_node("VBoxContainer/RichTextLabel")
 
 
-func add_message(text):
+@rpc("any_peer", "call_local")
+func add_message(id: int, text: String):
+	var player = get_node("/root/Game/Level").get_player(id)
+	if not player:
+		return
+
 	chatLog.text += '\n'
 	chatLog.text += '[color=' + player.get_color().to_html(false) + ']'
 	chatLog.text += '[' + player.get_nickname() + ']: '
@@ -15,7 +20,7 @@ func add_message(text):
 
 func _on_line_edit_text_submitted(new_text):
 	if new_text != '':
-		add_message(new_text)
+		add_message.rpc(id, new_text)
 		%ChatLineEdit.text = ""
 
 

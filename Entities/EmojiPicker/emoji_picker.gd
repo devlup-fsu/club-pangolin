@@ -1,6 +1,6 @@
 extends Control
 
-@export var player: Player
+@export var id: int = 1
 
 @onready var container: Container = $GridContainer
 
@@ -19,8 +19,12 @@ func _ready():
 			emoji_button.emoji_pressed.connect(_on_emoji_pressed)
 			container.add_child(emoji_button)
 
-
 func _on_emoji_pressed(emoji_name: String):
+	set_emoji.rpc(id, emoji_name)
+
+@rpc("any_peer", "call_local")
+func set_emoji(id: int, emoji_name: String):
+	var player = get_node("/root/Game/Level").get_player(id)
 	if player:
 		player.set_emoji(emojis[emoji_name])
 
