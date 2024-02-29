@@ -5,6 +5,10 @@ signal next(nickname: String, color: Color)
 @onready var player: Player = $Control/Player
 
 
+func _ready():
+	player.set_color(%ColorPicker.color)
+
+
 func _on_line_edit_text_changed(value: String):
 	player.set_nickname(value)
 

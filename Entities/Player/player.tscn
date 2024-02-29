@@ -10,7 +10,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
 shader = ExtResource("2_ufobd")
 shader_parameter/isSpectral = false
-shader_parameter/Color = Color(0.658824, 0.52549, 0.215686, 1)
+shader_parameter/Color = Color(0.970446, 0.289487, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
 height = 50.0
