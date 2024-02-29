@@ -1,42 +1,70 @@
-[gd_scene load_steps=6 format=3 uid="uid://mu6236s52i2y"]
+[gd_scene load_steps=8 format=3 uid="uid://mu6236s52i2y"]
 
 [ext_resource type="PackedScene" uid="uid://bkovgk4uy3l8f" path="res://Scenes/Level/level.tscn" id="1_kaguf"]
 [ext_resource type="Script" path="res://Scenes/Game/game.gd" id="1_xqwab"]
+[ext_resource type="Theme" uid="uid://bin1lq1ht3xqa" path="res://Themes/theme.tres" id="3_huodj"]
 [ext_resource type="PackedScene" uid="uid://d14c6rgad3oso" path="res://Entities/EmojiPicker/emoji_picker.tscn" id="3_i3c3s"]
 [ext_resource type="PackedScene" uid="uid://i4iuphw4tv8u" path="res://Scenes/StartMenu/start_menu.tscn" id="3_k1vku"]
 [ext_resource type="PackedScene" uid="uid://cow7eb2on4a54" path="res://Entities/ChatBox/chat_box.tscn" id="4_n5283"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppejs"]
+bg_color = Color(0.0117647, 0.568627, 0.909804, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.00784314, 0.392157, 0.690196, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Game" type="Node"]
 script = ExtResource("1_xqwab")
 
 [node name="Level" parent="." instance=ExtResource("1_kaguf")]
 unique_name_in_owner = true
-visible = false
 
 [node name="UserInterface" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="PanelContainer" type="PanelContainer" parent="UserInterface"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 549.0
+offset_right = 1141.27
+offset_bottom = 686.59
+theme = ExtResource("3_huodj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ppejs")
+
 [node name="EmojiPicker" parent="UserInterface" instance=ExtResource("3_i3c3s")]
 unique_name_in_owner = true
+layout_mode = 0
+offset_left = 411.0
+offset_top = 567.0
+offset_right = 411.0
+offset_bottom = 567.0
+scale = Vector2(0.7, 0.7)
 
 [node name="ChatBox" parent="UserInterface" instance=ExtResource("4_n5283")]
 unique_name_in_owner = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1.0
-offset_top = 411.0
-offset_right = 380.0
-offset_bottom = 647.0
+offset_left = 22.0
+offset_top = 252.0
+offset_right = 401.0
+offset_bottom = 488.0
 grow_horizontal = 1
 grow_vertical = 1
 
 [node name="StartMenu" parent="." instance=ExtResource("3_k1vku")]
 unique_name_in_owner = true
+visible = false
 
 [connection signal="next" from="StartMenu" to="." method="_on_start_menu_next"]
