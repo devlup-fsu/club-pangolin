@@ -8,4 +8,4 @@ func _ready():
 
 
 func _process(_delta):
-	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")

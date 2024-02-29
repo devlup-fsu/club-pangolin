@@ -18,7 +18,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-	#var direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
 	var direction = $InputSynchronizer.direction
 	
 	velocity = direction * SPEED
