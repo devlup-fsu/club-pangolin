@@ -38,6 +38,7 @@ func get_color() -> Color:
 
 func set_emoji(texture: Texture2D):
 	%EmojiSprite.texture = texture
+	%EmojiAnimation.stop()
 	%EmojiAnimation.play("show_emoji")
 
 
