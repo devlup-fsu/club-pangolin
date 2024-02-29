@@ -10,5 +10,5 @@ func spawn_player(nickname: String, color: Color):
 	player.global_position = get_viewport().get_visible_rect().size / 2
 	$Players.add_child(player)
 	
-	%EmojiPicker.player = player
-	%ChatBox.player = player
+	get_node("/root/Game/UserInterface/EmojiPicker").player = player
+	get_node("/root/Game/UserInterface/ChatBox").player = player
