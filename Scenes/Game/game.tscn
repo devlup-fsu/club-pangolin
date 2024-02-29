@@ -25,9 +25,11 @@ script = ExtResource("1_xqwab")
 
 [node name="Level" parent="." instance=ExtResource("1_kaguf")]
 unique_name_in_owner = true
+visible = false
 
 [node name="UserInterface" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -65,6 +67,5 @@ grow_vertical = 1
 
 [node name="StartMenu" parent="." instance=ExtResource("3_k1vku")]
 unique_name_in_owner = true
-visible = false
 
 [connection signal="next" from="StartMenu" to="." method="_on_start_menu_next"]

@@ -29,6 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_3gs2d")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
 offset_left = -104.0
 offset_top = -255.0
 offset_right = 396.0

@@ -35,3 +35,4 @@ scale = Vector2(0.604167, 0.594907)
 texture = ExtResource("2_qc7k7")
 
 [node name="Players" type="Node2D" parent="."]
+unique_name_in_owner = true
