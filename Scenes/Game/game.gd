@@ -11,7 +11,8 @@ func _on_start_menu_next():
 func _on_player_select_screen_next(nickname: String, color: Color):
 	$PlayerSelectScreen.queue_free()
 	
-	%Level.spawn_player(nickname, color)
+	%Level.spawn_player.rpc(nickname, color)
 	%Level.visible = true
 	
 	%UserInterface.visible = true
+	%EmojiPicker.id = multiplayer.get_unique_id()
