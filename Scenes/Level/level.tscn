@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkovgk4uy3l8f"]
+[gd_scene load_steps=7 format=3 uid="uid://bkovgk4uy3l8f"]
 
 [ext_resource type="Script" path="res://Scenes/Level/level.gd" id="1_aqojm"]
 [ext_resource type="Shader" uid="uid://cqieloblex8x3" path="res://Scenes/Level/water.tres" id="1_uuotg"]
 [ext_resource type="Texture2D" uid="uid://cnkfglqy5gqff" path="res://Scenes/Level/pangolin_level.png" id="2_qc7k7"]
-[ext_resource type="PackedScene" uid="uid://cow7eb2on4a54" path="res://Entities/ChatBox/chat_box.tscn" id="5_6qsh2"]
 [ext_resource type="Script" path="res://Scenes/Level/multiplayer_spawner.gd" id="5_45q6h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f4yww"]
@@ -39,28 +38,8 @@ texture = ExtResource("2_qc7k7")
 [node name="Players" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 unique_name_in_owner = true
 _spawnable_scenes = PackedStringArray("res://Entities/Player/player.tscn")
 spawn_path = NodePath("../Players")
 script = ExtResource("5_45q6h")
-
-[node name="ChatBox" parent="Control" instance=ExtResource("5_6qsh2")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1.0
-offset_top = 411.0
-offset_right = 380.0
-offset_bottom = 647.0
-grow_horizontal = 1
-grow_vertical = 1

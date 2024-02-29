@@ -15,3 +15,5 @@ func _on_player_select_screen_next(nickname: String, color: Color):
 	%Level.visible = true
 	%EmojiPicker.id = multiplayer.get_unique_id()
 	%EmojiPicker.visible = true
+	%ChatBox.id = multiplayer.get_unique_id()
+	%ChatBox.visible = true
