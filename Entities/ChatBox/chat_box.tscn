@@ -27,17 +27,10 @@ size_flags_vertical = 3
 bbcode_enabled = true
 scroll_following = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.203922, 0.772549, 0.945098, 1)
-text = "[Team]"
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="ChatLineEdit" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "TYPE HERE"
+placeholder_text = "Send Message"
 
-[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="VBoxContainer/ChatLineEdit" to="." method="_on_line_edit_text_submitted"]
