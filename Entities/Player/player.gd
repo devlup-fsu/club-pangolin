@@ -8,6 +8,10 @@ const SPEED = 300.0
 
 @export var is_groovin: bool = false
 @export var color: Color
+@export var id: int = 1:
+	set(value):
+		id = value
+		$InputSynchronizer.set_multiplayer_authority(id)
 
 var time: float = 0
 
@@ -16,7 +20,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = $InputSynchronizer.direction
 	
 	velocity = direction * SPEED
 	
@@ -40,6 +44,7 @@ func get_color() -> Color:
 	return color
 
 
+@rpc("any_peer", "call_local")
 func set_emoji(texture: Texture2D):
 	emoji.texture = texture
 
