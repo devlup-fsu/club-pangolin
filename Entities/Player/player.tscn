@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxbpq1alnb168"]
+[gd_scene load_steps=12 format=3 uid="uid://bxbpq1alnb168"]
 
 [ext_resource type="Texture2D" uid="uid://c03nl7f6mc6q1" path="res://Entities/Player/player_bottom.png" id="1_d37t4"]
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_v007v"]
 [ext_resource type="Texture2D" uid="uid://cnfosp3tx52j3" path="res://Entities/Player/player_top.png" id="2_mepn3"]
 [ext_resource type="Shader" uid="uid://bducsy7hhfs0m" path="res://Entities/Player/hue_shift.tres" id="2_ufobd"]
-[ext_resource type="Texture2D" uid="uid://c86y1qltqapan" path="res://Entities/EmojiPicker/Emojis/partying_face.svg" id="5_anhb5"]
 [ext_resource type="Theme" uid="uid://bin1lq1ht3xqa" path="res://Themes/theme.tres" id="5_te1jj"]
+[ext_resource type="Texture2D" uid="uid://dwv3oy601txh3" path="res://Entities/EmojiPicker/Emojis/nerd.svg" id="6_3krtq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wm0k8"]
 shader = ExtResource("2_ufobd")
@@ -14,6 +14,85 @@ shader_parameter/Color = Color(0.970446, 0.289487, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18qna"]
 height = 50.0
+
+[sub_resource type="Animation" id="Animation_j8v2y"]
+resource_name = "show_emoji"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.75, -0.25, 0, 0.25, 0, 1.25, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.75, -0.25, 0, 0.25, 0, 1.25, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.5, 3)
+}
+
+[sub_resource type="Animation" id="Animation_648yx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmhq4"]
+_data = {
+"RESET": SubResource("Animation_648yx"),
+"show_emoji": SubResource("Animation_j8v2y")
+}
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v007v")
@@ -35,6 +114,7 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_18qna")
 
 [node name="NicknameLabel" type="Label" parent="."]
+unique_name_in_owner = true
 offset_left = -251.0
 offset_top = 56.0
 offset_right = 249.0
@@ -43,6 +123,16 @@ theme = ExtResource("5_te1jj")
 text = "John Pangolin"
 horizontal_alignment = 1
 
-[node name="Emoji" type="Sprite2D" parent="."]
+[node name="EmojiSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -75)
-texture = ExtResource("5_anhb5")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_3krtq")
+
+[node name="EmojiAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../EmojiSprite")
+libraries = {
+"": SubResource("AnimationLibrary_tmhq4")
+}

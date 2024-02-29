@@ -2,10 +2,6 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 300.0
 
-@onready var emoji: Sprite2D = $Emoji
-@onready var bottom_sprite: Sprite2D = $BottomSprite
-@onready var nickname_label: Label = $NicknameLabel
-
 @export var is_groovin: bool = false
 @export var color: Color
 
@@ -24,16 +20,16 @@ func _physics_process(_delta):
 
 
 func set_nickname(value: String):
-	nickname_label.text = value
+	%NicknameLabel.text = value
 
 
 func get_nickname() -> String:
-	return nickname_label.text
+	return %NicknameLabel.text
 
 
 func set_color(color: Color):
 	self.color = color
-	bottom_sprite.material.set_shader_parameter("Color", color)
+	%BottomSprite.material.set_shader_parameter("Color", color)
 
 
 func get_color() -> Color:
@@ -41,7 +37,9 @@ func get_color() -> Color:
 
 
 func set_emoji(texture: Texture2D):
-	emoji.texture = texture
+	%EmojiSprite.texture = texture
+	%EmojiAnimation.stop()
+	%EmojiAnimation.play("show_emoji")
 
 
 # groovin, baby
